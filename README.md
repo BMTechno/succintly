@@ -1,2 +1,2 @@
 # succintly
-just a few items on Android Apps from existing curriculum
+just a few items on Android Apps from existing codebases
