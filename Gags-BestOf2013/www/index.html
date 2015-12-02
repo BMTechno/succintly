@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+		<title>Your New Application</title>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<style type="text/css">
+			/* Prevent copy paste for all elements except text fields */
+			*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+			input, textarea  { -webkit-user-select:text; }
+		</style>
+		<script src="intelxdk.js"></script>
+		<script type="text/javascript">
+			/* Intel native bridge is available */
+			var onDeviceReady=function(){
+			//hide splash screen
+			intel.xdk.device.hideSplashScreen();
+			};
+			document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+		</script>
+		<script src="cordova.js"></script>
+		<script type="application/javascript" src="js/jquery.min.js"></script>
+		<script type="application/javascript" src="marginal/marginal-position.min.js"></script>
+		<script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+		<script type="application/javascript" src="js/index_user_scripts.js"></script>
+		<script type="application/javascript" src="js/bs_subpage.js"></script>
+	</head>
+
+	<body>
+		<!-- content goes here-->
+		<div class="uwrap">
+			<div class="upage" id="mainpage">
+				<div class="upage-outer">
+					<div class="uib-header header-bg container-group inner-element uib_w_1" data-uib="layout/header" data-ver="0">
+						<h2>Gags-Best of 2013</h2>
+						<div class="widget-container wrapping-col single-centered"></div>
+						<div class="widget-container content-area horiz-area wrapping-col left"></div>
+						<div class="widget-container content-area horiz-area wrapping-col right"></div>
+					</div>
+					<div class="upage-content" id="mainsub">
+
+						<div class="grid grid-pad urow uib_row_2 row-height-2" data-uib="layout/row" data-ver="0">
+							<div class="col uib_col_3 col-0_12-12" data-uib="layout/col" data-ver="0">
+								<div class="widget-container content-area vertical-col">
+
+									<div class="widget uib_w_3 scale-image d-margins" data-uib="media/img" data-ver="0">
+										<figure class="figure-align">
+											<img src="img/log.jpg">
+											<figcaption data-position="bottom"></figcaption>
+										</figure>
+									</div>
+									<button type="button" class="btn widget uib_w_5 d-margins btn-lg btn-danger" data-uib="twitter%20bootstrap/button" data-ver="0"><i class="glyphicon button-icon-left" data-position="left"></i>Videos</button>
+									<div class="panel widget uib_w_4 panel-danger" data-uib="twitter%20bootstrap/collapsible" data-ver="0">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-1" data-parent="#null">About Gags</a>
+       </h4>
+										</div>
+										<div id="bs-accordion-group-1" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="col uib_col_4 single-col" data-uib="layout/col" data-ver="0">
+													<div class="widget-container content-area vertical-col">
+
+														<div class="widget uib_w_33 d-margins" data-uib="media/text" data-ver="0">
+															<div class="widget-container left-receptacle"></div>
+															<div class="widget-container right-receptacle"></div>
+															<div>
+																<p>Just for Laughs: Gags (in French, Juste pour rire: Gags) is a Canadian silent comedy/hidden camera reality television show that is under the Just for Laughs brand.</p>
+																<p>&nbsp;</p>
+																<p>This series' format is a hidden camera comedy show, playing silly pranks on unsuspecting subjects while hidden cameras capture peoples' responses. The show plays public domain music in the background, but does not contain any sound or
+																	dialogue other than brief sound effects and a laugh track. Although some shorts have included brief dialogue. It is mostly filmed in Quebec and Montreal, although some segments have been filmed in Mexico as well. British and Asian versions
+																	have been produced in the UK and Singapore respectively.</p>
+															</div>
+														</div><span class="uib_shim"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="widget uib_w_32 scale-image d-margins" data-uib="media/img" data-ver="0">
+										<figure class="figure-align">
+											<img src="img/banner.jpg">
+											<figcaption data-position="bottom"></figcaption>
+										</figure>
+									</div>
+
+									<span class="uib_shim"></span>
+								</div>
+							</div>
+							<span class="uib_shim"></span>
+						</div>
+					</div>
+					<!-- /upage-content -->
+
+					<div class="uib-footer uib-footer-fixed footer-bg container-group inner-element uib_w_2" data-uib="layout/footer" data-ver="0">
+						<h2></h2>
+						<div class="widget-container wrapping-col single-centered"></div>
+						<div class="widget-container content-area horiz-area wrapping-col left"></div>
+						<div class="widget-container content-area horiz-area wrapping-col right"></div>
+					</div>
+				</div>
+				<!-- /upage-outer -->
+
+			</div>
+			<div class="upage hidden" id="videos">
+				<div class="upage-outer">
+					<div class="uib-header header-bg container-group inner-element uib_w_6" data-uib="layout/header" data-ver="0">
+						<h2>The top 10 videos</h2>
+						<div class="widget-container wrapping-col single-centered"></div>
+						<div class="widget-container content-area horiz-area wrapping-col left"></div>
+						<div class="widget-container content-area horiz-area wrapping-col right"></div>
+					</div>
+					<div id="videossub" class="upage-content ">
+
+						<div class="grid grid-pad urow uib_row_3 row-height-3" data-uib="layout/row" data-ver="0">
+							<div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
+								<div class="widget-container content-area vertical-col">
+
+									<div class="panel widget uib_w_11 panel-danger" data-uib="twitter%20bootstrap/collapsible" data-ver="0">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-0" data-parent="#null">Epic Old Man- Traffic Jam Prank</a>
+       </h4>
+										</div>
+										<div id="bs-accordion-group-0" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="col uib_col_6 single-col" data-uib="layout/col" data-ver="0">
+													<div class="widget-container content-area vertical-col">
+
+														<div class="embed-video widget uib_w_23 d-margins" data-uib="media/youtube" data-ver="0">
+															<iframe src="http://www.youtube.com/embed/G0PekTUmBdY?wmode=transparent">
+															</iframe>
+														</div><span class="uib_shim"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel widget uib_w_12 panel-danger" data-uib="twitter%20bootstrap/collapsible" data-ver="0">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-3" data-parent="#null">Sexy Brunette's Shirt gets splattered</a>
+       </h4>
+										</div>
+										<div id="bs-accordion-group-3" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="col uib_col_7 single-col" data-uib="layout/col" data-ver="0">
+													<div class="widget-container content-area vertical-col">
+
+														<div class="embed-video widget uib_w_22 d-margins" data-uib="media/youtube" data-ver="0">
+															<iframe src="http://www.youtube.com/embed/fqoomfFoi3s?wmode=transparent">
+															</iframe>
+														</div><span class="uib_shim"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel widget uib_w_13 panel-danger" data-uib="twitter%20bootstrap/collapsible" data-ver="0">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-4" data-parent="#null">Hot Girl Exposes Hairy Chest</a>
+       </h4>
+										</div>
+										<div id="bs-accordion-group-4" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="col uib_col_8 single-col" data-uib="layout/col" data-ver="0">
+													<div class="widget-container content-area vertical-col">
+
+														<div class="embed-video widget uib_w_24 d-margins" data-uib="media/youtube" data-ver="0">
+															<iframe src="http://www.youtube.com/embed/sls5M5YWIOQ?wmode=transparent">
+															</iframe>
+														</div><span class="uib_shim"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel widget uib_w_14 panel-danger" data-uib="twitter%20bootstrap/collapsible" data-ver="0">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-5" data-parent="#null">Bridezilla? No, Just Gorilla Bride</a>
+       </h4>
+										</div>
+										<div id="bs-accordion-group-5" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="col uib_col_9 single-col" data-uib="layout/col" data-ver="0">
+													<div class="widget-container content-area vertical-col">
+
+														<div class="embed-video widget uib_w_25 d-margins" data-uib="media/youtube" data-ver="0">
+															<iframe src="http://www.youtube.com/embed/NV_V1AvZec4?wmode=transparent">
+															</iframe>
+														</div><span class="uib_shim"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel widget uib_w_15 panel-danger" data-uib="twitter%20bootstrap/collapsible" data-ver="0">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-6" data-parent="#null">Wet girl, Dry Girl-Just Kidding prank</a>
+       </h4>
+										</div>
+										<div id="bs-accordion-group-6" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+													<div class="widget-container content-area vertical-col">
+
+														<div class="embed-video widget uib_w_26 d-margins" data-uib="media/youtube" data-ver="0">
+															<iframe src="http://www.youtube.com/embed/yzOmI1jgl_o?wmode=transparent">
+															</iframe>
+														</div><span class="uib_shim"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel widget uib_w_16 panel-danger" data-uib="twitter%20bootstrap/collapsible" data-ver="0">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-7" data-parent="#null">Face Door knocker comes to Life</a>
+       </h4>
+										</div>
+										<div id="bs-accordion-group-7" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="col uib_col_11 single-col" data-uib="layout/col" data-ver="0">
+													<div class="widget-container content-area vertical-col">
+
+														<div class="embed-video widget uib_w_27 d-margins" data-uib="media/youtube" data-ver="0">
+															<iframe src="http://www.youtube.com/embed/-Kee7iyp_3U?wmode=transparent">
+															</iframe>
+														</div><span class="uib_shim"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel widget uib_w_17 panel-danger" data-uib="twitter%20bootstrap/collapsible" data-ver="0">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-8" data-parent="#null">Accidental Matador</a>
+       </h4>
+										</div>
+										<div id="bs-accordion-group-8" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="col uib_col_12 single-col" data-uib="layout/col" data-ver="0">
+													<div class="widget-container content-area vertical-col">
+
+														<div class="embed-video widget uib_w_28 d-margins" data-uib="media/youtube" data-ver="0">
+															<iframe src="http://www.youtube.com/embed/jDZ5pDR6-D0?wmode=transparent">
+															</iframe>
+														</div><span class="uib_shim"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel widget uib_w_18 panel-danger" data-uib="twitter%20bootstrap/collapsible" data-ver="0">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-9" data-parent="#null">Sexy Girl Fart</a>
+       </h4>
+										</div>
+										<div id="bs-accordion-group-9" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="col uib_col_13 single-col" data-uib="layout/col" data-ver="0">
+													<div class="widget-container content-area vertical-col">
+
+														<div class="embed-video widget uib_w_29 d-margins" data-uib="media/youtube" data-ver="0">
+															<iframe src="http://www.youtube.com/embed/_UfwDEbKfNY?wmode=transparent">
+															</iframe>
+														</div><span class="uib_shim"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel widget uib_w_19 panel-danger" data-uib="twitter%20bootstrap/collapsible" data-ver="0">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-10" data-parent="#null">Fur Peit? No Furry pet!</a>
+       </h4>
+										</div>
+										<div id="bs-accordion-group-10" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="col uib_col_14 single-col" data-uib="layout/col" data-ver="0">
+													<div class="widget-container content-area vertical-col">
+
+														<div class="embed-video widget uib_w_30 d-margins" data-uib="media/youtube" data-ver="0">
+															<iframe src="http://www.youtube.com/embed/dum6XmoMsho?wmode=transparent">
+															</iframe>
+														</div><span class="uib_shim"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel widget uib_w_20 panel-danger" data-uib="twitter%20bootstrap/collapsible" data-ver="0">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-11" data-parent="#null">Trapped in Closet Prank</a>
+       </h4>
+										</div>
+										<div id="bs-accordion-group-11" class="panel-collapse collapse">
+											<div class="panel-body">
+												<div class="col uib_col_15 single-col" data-uib="layout/col" data-ver="0">
+													<div class="widget-container content-area vertical-col">
+
+														<div class="embed-video widget uib_w_31 d-margins" data-uib="media/youtube" data-ver="0">
+															<iframe src="http://www.youtube.com/embed/nMcrsNk09fU?wmode=transparent">
+															</iframe>
+														</div><span class="uib_shim"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<button type="button" class="btn widget uib_w_10 d-margins btn-lg btn-info" data-uib="twitter%20bootstrap/button" data-ver="0" id="hme"><i class="glyphicon glyphicon-home" data-position="icon only"></i>
+									</button>
+									<span class="uib_shim"></span>
+								</div>
+							</div>
+							<span class="uib_shim"></span>
+						</div>
+					</div>
+					<div class="uib-footer uib-footer-fixed footer-bg container-group inner-element uib_w_7" data-uib="layout/footer" data-ver="0">
+						<h2></h2>
+						<div class="widget-container wrapping-col single-centered"></div>
+						<div class="widget-container content-area horiz-area wrapping-col left"></div>
+						<div class="widget-container content-area horiz-area wrapping-col right"></div>
+					</div>
+				</div>
+				<!-- /upage-outer -->
+			</div>
+			<!-- /upage -->
+
+		</div>
+		<!-- /uwrap -->
+	</body>
+
+</html>
