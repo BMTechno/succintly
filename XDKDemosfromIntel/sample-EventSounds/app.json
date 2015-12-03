@@ -1,0 +1,13 @@
+{
+"reponame":"sample-EventSounds",
+"title":"Sound Demonstration",
+"tooltip":"This demonstration will use the JavaScript bridge to play a sound through a native API in a hybrid app",
+"description":"Based on an event thrown by a touch event, this demonstration will play a sound using the JavaScript bridge library.",
+"articleUrl":"",
+"keywords":["demo","sound","hybrid app"],
+"visible" : "false",
+"highlights" : ["demo","sound","hybrid app"]
+"apppreview":"true",
+"appname":"demo.eventsoundsnew",
+"relname":"4.0.0"
+}

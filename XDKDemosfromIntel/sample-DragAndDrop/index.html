@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<!--
+Copyright (c) 2011, 2012, 2013 Intel Corporation
+
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+-->
+    <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+
+    <title>Drag and Drop</title>
+        <script src='intelxdk.js'></script> 
+        
+        <style type="text/css">
+            
+        /*** Prevent copy paste for all elements except text fields ****/
+        * { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); -ms-touch-action:none;} 
+        input, textarea  { -webkit-user-select:text; } 
+        body { color:White;font-family:Arial; }
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html, body {
+	        height: 100%;	
+        }
+
+        #container {
+	        min-height: 100%;
+	        width:100%;
+	        margin: 0 auto;	
+        }
+        * html #container {
+	        height: 100%;	
+        }
+
+        </style>
+        
+        <script language="javascript" type="text/javascript">
+        //Define any global variables here
+        var iPortraitWidth=768;
+        var iLandscapeWidth=1024;
+        var boolSelected = false;
+        var dragItemHeight=110;
+        var dragItemWidth=90;
+        imgOffset=dragItemWidth;
+       
+        
+       function init(){
+		addMovingItem("dragItem");
+		addMovingItem("dragItem2");
+	   }
+        
+        //JavaScript Bridge Library Ready
+        function onDeviceReady()
+        {
+            
+            try
+            {
+                //lock orientation
+                intel.xdk.device.setRotateOrientation("portrait");
+                intel.xdk.device.setAutoRotate(false);
+            }
+            catch(e){}
+            
+            try
+            {
+                //manage power
+                intel.xdk.device.managePower(true,false);
+            }
+            catch(e){}
+			
+			//hide splash screen
+			intel.xdk.device.hideSplashScreen();
+
+        }
+        
+		document.addEventListener("intel.xdk..device.ready",onDeviceReady,false); 
+ 
+
+        //*** Webview Maintenance ********
+        /* This code prevents the webview from moving on a swipe */
+        preventDefaultScroll = function(event) {
+            // Prevent scrolling on this element
+            event.preventDefault();
+            window.scroll(0,0);
+            return false;
+        };
+        
+        window.document.addEventListener('touchmove', preventDefaultScroll, false);
+				
+				
+				
+
+		function touchStart(e){
+		  e.preventDefault();
+		  if(isMoving==false&&movingItems[e.target.id]==1){
+		  isMoving=true;
+		  var orig=e;
+		  var x = orig.touches[0].pageX-imgOffset;
+		  var y = orig.touches[0].pageY-imgOffset;
+		  //Set the item to moving, and update the position and zIndex
+		  movingItems[e.target.id]=2;
+		  document.getElementById(e.target.id).style.top=y+"px";
+		  document.getElementById(e.target.id).style.left=x+"px";
+		  document.getElementById(e.target.id).style.zIndex=2000;
+		  }
+		}
+
+
+		function touchMove(e){
+		e.preventDefault();
+		//Check that the target element is registered and flagged as moving
+		  if(movingItems[e.target.id]&&movingItems[e.target.id]==2){
+		  var orig=e;
+		  if(orig.touches.length>1)
+			 return;
+		  var x = orig.touches[0].pageX-imgOffset;
+		  var y = orig.touches[0].pageY-imgOffset;
+		  
+		  document.getElementById(e.target.id).style.top=y+"px";
+		  document.getElementById(e.target.id).style.left=x+"px";
+		  }
+		}
+		
+		
+		function touchEnd(e){
+		if(movingItems[e.target.id]){
+		   isMoving=false;
+		   //Deactivate the current moving object and set the zIndex to 1;
+		   movingItems[e.target.id]=1;
+		   document.getElementById(e.target.id).style.zIndex=2;
+		   for(j in movingItems)
+		   {
+			  if(j!=e.target.id)
+			  {
+				 document.getElementById(j).style.zIndex=1;
+			  }
+		   }
+		  }
+		}
+		
+		window.document.addEventListener('touchmove', touchMove, false);
+		window.document.addEventListener('touchend', touchEnd, false);
+		window.document.addEventListener('touchstart', touchStart, false);
+		
+		var movingItems={};
+		function addMovingItem(ind)
+		{
+		   movingItems[ind]=1;
+		}
+		var isMoving=false;
+		
+        </script>
+        
+
+    </head>
+    <body onload="init();" id="stage" style="height:100%;background-image:url(images/app_bg_textured.jpg); background-repeat:no-repeat;">
+	<div id="container" style="position:relative;overflow:hidden;">
+    <img id="dragItem"  src="images/poker_chip.png" style="width:180px;position:absolute; top:280px; left:280px;" />
+<img id="dragItem2"  src="images/poker_chip_green.png" style="width:180px;position:absolute; top:10px; left:100px;" />
+	</div>
+    </body>
+</html>

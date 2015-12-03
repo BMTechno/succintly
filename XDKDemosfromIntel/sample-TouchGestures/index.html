@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<!--
+Copyright (c) 2011, 2012, 2013 Intel Corporation
+
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+-->
+    <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+
+    <title>Touch Gestures</title>
+
+        <script src='intelxdk.js'></script> 
+		<script src="appframework.min.js" type="text/javascript"></script>
+		<script src="plugins/af.css3animate.js" type="text/javascript"></script>	
+        <script type="text/javascript" charset="utf-8" src="swipe.js"></script>
+
+        <style type="text/css">
+            * { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); -ms-touch-action:none;} 
+        </style>
+
+
+        <script language="javascript" type="text/javascript">
+        //global variables
+        var width = 100;
+        var height = 200
+        var rotation = 0;
+        
+        var boolFlip = false;
+        var zindx=100;
+
+        var iPortraitWidth=768;
+        var iLandscapeWidth=1024;
+        
+       
+
+        
+        //This function runs once the page is loaded
+        function init()
+        {
+            console.log("in gestures");
+
+            addSwipeListener(document.body, function(e) { swipeHandler(e.direction);  });
+        }
+        
+        
+        //*** Swipe Gesture **************
+        function swipeHandler(strDirection)
+        {   
+            console.log("flip " + strDirection);
+        
+            iterateFlip(); 
+        }
+        
+        var iRotation=0;
+        var boolDirection=true;
+        var iStep = 10;
+        
+        function iterateFlip()
+        {
+            if (iRotation==0)
+            {
+                if (boolDirection==true)
+                {
+                    //start rotation
+                    iRotation = iRotation+3;
+                    iterateFlip();
+                }
+                else
+                {
+                    //end rotation
+                    $("#cardFront").css("webkitTransform","rotate(" + ((rotation) % 360) + "deg)");
+                    $("#cardBack").css("webkitTransform","rotate(" + ((rotation) % 360) + "deg)");
+                   
+                    boolDirection=true;
+                }
+  
+            }
+            else if (iRotation>0 && iRotation < 90)
+            {
+                try
+                {
+                    var oRotation = 180 - iRotation;
+                    $("#cardBack").css("webkitTransform", 'rotate(' + ((rotation) % 360) + 'deg)  rotateY(' + iRotation + 'deg)');
+                    $("#cardFront").css("webkitTransform",'rotate(' + ((rotation) % 360) + 'deg) rotateY(' + iRotation + 'deg)');
+
+                    if (boolDirection==true)
+                    {
+                        iRotation = iRotation+3;
+                    }
+                    else
+                    {
+                        iRotation = iRotation-3;
+                    } 
+                    setTimeout("iterateFlip();",iStep);
+                }
+                catch(e)
+                {
+                    console.log("error:" + e.message);
+                }
+                return;
+            }
+            else if (iRotation==90)
+            {
+                if ($("#cardBack").css("display")=="none") 
+                {
+                    $("#cardBack").css("display","block");
+                    $("#cardFront").css("display","none");
+                }
+                else
+                {
+                    $("#cardFront").css("display","block");
+                    $("#cardBack").css("display","none");
+                }
+                boolDirection=!boolDirection;
+                iRotation = iRotation-3;
+                setTimeout("iterateFlip();",iStep);
+            }
+        }
+        
+        
+        //*** Device Ready Code **********
+        function onDeviceReady()
+        {
+            //lock orientation
+            intel.xdk.device.setRotateOrientation("portrait");
+            intel.xdk.device.setAutoRotate(false);
+            
+            //manage power
+            intel.xdk.device.managePower(true,false);
+			
+			//hide splash screen
+			intel.xdk.device.hideSplashScreen();			
+        }
+        
+		document.addEventListener("intel.xdk.device.ready",onDeviceReady,false); 
+        
+        </script>
+ 
+    </head>
+    <body onload="init();" style="background-image:url(images/app_bg.jpg);background-repeat:no-repeat;">
+
+    <img id="stage" src="images/0.gif" style="width:768px; height:1306px; position:absolute;top:0px; left:0px;"  />
+    
+    <img src="images/0.gif" width="150" height="150" style="position:absolute;top:0px;right:150px;" onclick="iterateFlip();" />
+    
+    <img id="cardBack" src="images/card_back.png" style="position:absolute; top:155px; left:155px;" />
+    <img id="cardFront" src="images/card_front.png" style="position:absolute; top:155px; left:155px; display:none;" />
+    
+    <span id="info" style="background-color:#000000;opacity:0.6;font-family:Arial;width:740px;top:950px;left:10px;position:absolute;text-align:center;"><span style="color:White;font-family:Arial;">Drag vertically to rotate the card, swipe horizontally to flip it</span></span>
+
+    </body>
+</html>

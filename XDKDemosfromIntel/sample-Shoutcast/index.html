@@ -1,0 +1,416 @@
+<!DOCTYPE html><!--HTML5 doctype-->
+<html>
+<!--
+Copyright (c) 2011, 2012, 2013 Intel Corporation
+
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+-->
+  <head>
+    <title>Shoutcast</title>
+
+	<style type="text/css">
+	@font-face {
+			font-family: 'EurostileANDROID';
+			src: url('fonts/eurosti_1-webfont.ttf') format('truetype');
+	}
+	@font-face {
+		font-family: 'EurostileRegular';
+		src: url('fonts/eurosti_1-webfont.eot');
+		src: local('☺'), url('fonts/eurosti_1-webfont.woff') format('woff'), url('fonts/eurosti_1-webfont.ttf') format('truetype'), url('fonts/eurosti_1-webfont.svg#webfontBGthSONA') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+				 
+
+	#body {
+		background-image:url(images/Bkgrd.jpg);
+
+	}
+	#apDiv1 {
+		position:absolute;
+		width:320px;
+		height:185px;
+		z-index:1;
+		left: 0px;
+		top: 264px;
+		font-size: 14px;
+	}
+	#apDiv2 {
+		position:absolute;
+		width:320px;
+		height:260px;
+		z-index:1;
+		left: 0px;
+		top: 0px;
+	}
+	#apDiv3 {
+		position:absolute;
+		width:108px;
+		height:25px;
+		z-index:1;
+		left: 103px;
+		top: 64px;
+	}
+	#apDiv4 {
+		position:absolute;
+		width:79px;
+		height:47px;
+		z-index:2;
+		left: 202px;
+		top: 35px;
+	}
+	#play {
+		position:absolute;
+		width:36px;
+		height:26px;
+		z-index:2;
+		left: 118px;
+		top: 220px;
+	}
+	#apDiv5 {
+		position:absolute;
+		width:36px;
+		height:26px;
+		z-index:3;
+		left: 167px;
+		top: 220px;
+	}
+	#apDiv6 {
+		position:absolute;
+		width:36px;
+		height:27px;
+		z-index:4;
+		left: 71px;
+		top: 220px;
+	}
+	#apDiv7 {
+		position:absolute;
+		width:36px;
+		height:27px;
+		z-index:2;
+		left: 211px;
+		top: 220px;
+	}
+	#apDiv8 {
+		position:absolute;
+		width:37px;
+		height:27px;
+		z-index:5;
+		left: 26px;
+		top: 220px;
+	}
+	#apDiv9 {
+		position:absolute;
+		width:37px;
+		height:27px;
+		z-index:6;
+		left: 255px;
+		top: 220px;
+	}
+	#apDiv10 {
+		position:absolute;
+		width:160px;
+		height:30px;
+		z-index:7;
+		left: 80px;
+		top: 108px;
+	}
+	#apDiv11 {
+		position:absolute;
+		width:160px;
+		height:28px;
+		z-index:8;
+		left: 81px;
+		top: 158px;
+	}
+	#apDiv12 {
+		position:absolute;
+		width:320px;
+		height:500px;
+		z-index:2;
+		left: 0px;
+		top: 0px;
+	}
+	*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+	</style>
+
+
+    <script src='intelxdk.js'></script> 
+    <script type="text/javascript" charset="utf-8">
+		var jazzURL="http://64.5.130.43:80/";
+		
+		function buildMessage(e) {
+			var msg = e.type;
+			msg+='<br>';
+			return msg;
+		}
+
+		function prependToLog(log, message) {			
+			var child = document.createElement('div');
+			child.innerHTML = message;
+			log.firstChild==null?
+				log.appendChild(child):
+				log.insertBefore(child, log.firstChild);
+		}
+
+		function playerEventListener(e) {
+			try {
+
+				var log = document.getElementById('log');
+				prependToLog(log, buildMessage(e));
+				
+				if (e.type=="intel.xdk.player.shoutcast.start"){
+				    document.getElementById("play").src="images/Pause.png";
+				    boolPlaying=true;
+				}
+				if (e.type=="intel.xdk.player.shoutcast.stop"||e.type=="intel.xdk.player.shoutcast.error"){
+				    document.getElementById("play").src="images/Play.png";
+				    boolPlaying=false;
+				}
+				if (e.type=="intel.xdk.player.shoutcast.pause"){
+				    document.getElementById("play").src="images/Play.png";
+				    boolPaused=true;
+				}
+				
+				if (e.type=="intel.xdk.player.station.start"){
+				    document.getElementById("play").src="images/Pause.png";
+				    boolPlaying=true;
+				}
+				if (e.type=="intel.xdk.player.station.stop"||e.type=="intel.xdk.player.station.error"){
+				    document.getElementById("play").src="images/Play.png";
+				    boolPlaying=false;
+				}
+				if (e.type=="intel.xdk.player.station.pause"){
+				    document.getElementById("play").src="images/Play.png";
+				    boolPaused=true;
+				}
+			} catch(e) {
+				alert('something bad happened in playerEventListener: ' + e.message);
+			}
+		}
+
+		function backgroundListener(e) {
+			try {
+
+				var log = document.getElementById('log');
+				prependToLog(log, buildMessage(e));
+
+				if(e.type=='intel.xdk.device.resume') {
+					prependToLog(log, "lastPlaying: " + intel.xdk.device.lastPlaying);
+				}
+				
+
+
+			} catch(e) {
+				alert('something bad happened in playerEventListener: ' + e.message);
+			}
+		}
+
+		function trackChangeListener(e) {
+			try {
+				var info = document.getElementById('trackInfo');
+				info.innerHTML =
+					"Artist: " + intel.xdk.playingtrack.artist + "<br>"+
+					"Title: " + intel.xdk.playingtrack.title + "<br>"+
+					"Album: " + intel.xdk.playingtrack.album + "<br>" +
+					"<img src='" + intel.xdk.playingtrack.imageurl + "'>";
+			} catch(e){
+				alert('something bad happened in trackChangeListener: ' + e.message);
+			}
+		}
+
+		var defaultColors = true;
+		function setColors() {
+			var btn = document.getElementById('btn16');
+			if(defaultColors) {
+				//red
+				intel.xdk.player.setColors('FFC0C0', 'C00000', 'FF4040', 'FF8080');
+				btn.innerHTML = "Set progress blue";
+			} else {
+				//blue
+				intel.xdk.player.setColors('C0C0FF', '0000C0', '4040FF', '8080FF');
+				btn.innerHTML = "Set progress red";
+			}
+
+			defaultColors = !defaultColors;
+		}
+
+		var defaultPosition = true;
+		function setPosition() {
+			if(defaultPosition) {
+				intel.xdk.player.setPosition(100,100,100,100);
+			} else {
+				intel.xdk.player.setPosition(0,0,0,0);
+			}
+			defaultPosition=!defaultPosition;
+		}
+
+		function adjustVolume(delta) {
+			var volume = document.getElementById('volume');
+			var volumeValue = parseInt(volume.innerHTML.substring(volume.innerHTML.lastIndexOf(":")+1));
+			volumeValue += delta;
+			if(volumeValue>=0&&volumeValue<=100) {
+				intel.xdk.player.volume(volumeValue);
+				volume.innerHTML = "&nbsp;&nbsp;&nbsp;Volume: " + volumeValue;
+			}
+		}
+
+		function setVolume(volumeValue) {
+			var volume = document.getElementById('volume');
+			intel.xdk.player.volume(volumeValue);
+			volume.innerHTML = "&nbsp;&nbsp;&nbsp;Volume: " + volumeValue;
+		}
+
+		function deviceReadyListener(e) {
+        
+            //lock orientation
+            intel.xdk.device.setRotateOrientation("portrait");
+            intel.xdk.device.setAutoRotate(false);
+            
+            //manage power
+            intel.xdk.device.managePower(true,false);
+			setVolume(100);		
+			
+			if(intel.xdk.device.platform.toUpperCase()=="ANDROID")
+			{
+			    //fix the font on Android devices
+			    document.getElementById("log").style.fontFamily="EurostileANDROID";
+			    document.getElementById("trackInfo").style.fontFamily="EurostileANDROID";
+			    document.getElementById("volume").style.fontFamily="EurostileANDROID";
+			}	
+			
+			//hide splash screen
+			intel.xdk.device.hideSplashScreen();
+			
+		}
+
+        var boolPlaying = false;
+        var boolPaused = false;
+		document.addEventListener('intel.xdk.device.ready', deviceReadyListener, false);
+
+		document.addEventListener('intel.xdk.player.hide', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.show', playerEventListener, false);
+
+		document.addEventListener('intel.xdk.player.shoutcast.start', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.shoutcast.play', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.shoutcast.pause', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.shoutcast.stop', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.shoutcast.busy', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.shoutcast.error', playerEventListener, false);
+
+		document.addEventListener('intel.xdk.player.podcast.start', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.podcast.play', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.podcast.pause', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.podcast.stop', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.podcast.busy', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.podcast.error', playerEventListener, false);
+		
+		document.addEventListener('intel.xdk.player.station.start', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.station.play', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.station.pause', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.station.stop', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.station.busy', playerEventListener, false);
+		document.addEventListener('intel.xdk.player.station.error', playerEventListener, false);
+		
+		document.addEventListener('intel.xdk.device.suspend', backgroundListener, false);
+		document.addEventListener('intel.xdk.device.resume', backgroundListener, false);
+
+		function checkSel(obj) {
+			var ind = obj.selectedIndex;
+		}
+		
+		function playbutton()
+		{
+		    if (boolPlaying) 
+		    {
+		        if (boolPaused==false)
+		        {
+		            intel.xdk.player.pause();
+		            document.getElementById("play").src="images/Play.png";
+		        }
+		        else
+		        {
+		            intel.xdk.player.play(); 
+		            document.getElementById("play").src="images/Pause.png";		        
+		        }
+		    } 
+    		else 
+		    {
+                //start playing
+                music();
+		    }
+		}
+
+		function musicshowplayer()
+		{
+		    intel.xdk.player.startShoutcast(jazzURL,true);
+		    intel.xdk.player.show();
+		}
+		
+		
+		function music()
+		{
+		    intel.xdk.player.startShoutcast(jazzURL,false);
+		}
+
+		
+		function disappear()
+		{
+			document.getElementById("apDiv12").style.display="none";
+		}
+</script>
+   
+	
+
+
+
+</head>
+
+<!--Buttons-->
+<body style="background:url(images/Bkgrd.jpg); background-repeat:no-repeat;">
+
+<div id="apDiv2">
+
+  <img id="play" ontouchstart="playbutton();" src="images/Play.png"/>
+  <img id="apDiv5" ontouchstart="intel.xdk.player.stop();"src="images/Stop.png"/>
+  <img id="apDiv6" ontouchstart="intel.xdk.player.rewind();"src="images/Back.png"/>
+  <img id="apDiv7" ontouchstart="intel.xdk.player.ffwd();"src="images/Forward.png"/>
+  <img id="apDiv9" ontouchstart="adjustVolume(10);"src="images/VolumeUp.png"/>
+  <img id="apDiv8" ontouchstart="adjustVolume(-10);"src="images/VolumeDown.png"/>
+  <img id="apDiv10" ontouchstart="musicshowplayer();"src="images/ShowPlayer.png"/>
+  <img id="apDiv11" onClick="music();" src="images/StartStreaming.png"/>
+</div>
+
+
+<!--End Buttons-->
+  <div id="apDiv1">
+	<hr>
+
+	<div id='trackInfo' style="color:green;font-family:EurostileRegular;"></div>
+	<div id='volume' style="color:white;font-family:EurostileRegular;"></div>
+
+	<hr>
+
+	<div id='log' style="color: white; margin-left:10px;font-family:EurostileRegular;"></div></div>
+  
+</body>
+</html>

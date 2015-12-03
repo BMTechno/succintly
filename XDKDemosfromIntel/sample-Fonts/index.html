@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<!--
+Copyright (c) 2011, 2012, 2013 Intel Corporation
+
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+-->
+<head>
+<title>Fonts</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <script src='intelxdk.js'></script> 
+    <style type="text/css">
+    * { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); -ms-touch-action:none;} 
+    input, textarea  { -webkit-user-select:text; } 
+
+    .heading1 { font-size:14pt;font-weight:bold;line-height:18pt; }
+    
+    @font-face {
+		font-family: 'ComfortaaRegular';
+		src: url('fonts/Comfortaa_Regular-webfont.eot');
+		src: local('☺'), url('fonts/Comfortaa_Regular-webfont.woff') format('woff'), url('fonts/Comfortaa_Regular-webfont.ttf') format('truetype'), url('fonts/Comfortaa_Regular-webfont.svg#webfontLeO4sLIF') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'ProclamateLightLight';
+		src: url('fonts/proclamate_light-webfont.eot');
+		src: local('☺'), url('fonts/proclamate_light-webfont.woff') format('woff'), url('fonts/proclamate_light-webfont.ttf') format('truetype'), url('fonts/fonts/proclamate_light-webfont.svg#webfontBwH0zvHp') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'KitchenpoliceRegular';
+		src: url('fonts/KITCHENPOLICE-webfont.eot');
+		src: local('☺'), url('fonts/KITCHENPOLICE-webfont.woff') format('woff'), url('fonts/KITCHENPOLICE-webfont.ttf') format('truetype'), url('fonts/KITCHENPOLICE-webfont.svg#webfontCRDciSXC') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'ActionManRegular';
+		src: url('fonts/Action_Man-webfont.eot');
+		src: local('☺'), url('fonts/Action_Man-webfont.woff') format('woff'), url('fonts/Action_Man-webfont.ttf') format('truetype'), url('fonts/Action_Man-webfont.svg#webfontClWwq9Xd') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'Letritista';
+		src: url('fonts/Letritista-webfont.eot');
+		src: local('☺'), url('fonts/Letritista-webfont.woff') format('woff'), url('fonts/Letritista-webfont.ttf') format('truetype'), url('fonts/Letritista-webfont.svg#webfontFJkdwKNB') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'Furore';
+		src: url('fonts/Furore-webfont.eot');
+		src: local('☺'), url('fonts/Furore-webfont.woff') format('woff'), url('fonts/Furore-webfont.ttf') format('truetype'), url('fonts/Furore-webfont.svg#webfontWqAYPOOV') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'AnagramRegular';
+		src: url('fonts/Anagram-webfont.eot');
+		src: local('☺'), url('fonts/Anagram-webfont.woff') format('woff'), url('fonts/Anagram-webfont.ttf') format('truetype'), url('fonts/Anagram-webfont.svg#webfontPPYxxLzF') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'CaslonCalligraphicInitialsReg';
+		src: url('fonts/Caslon_Calligraphic-webfont.eot');
+		src: local('☺'), url('fonts/Caslon_Calligraphic-webfont.woff') format('woff'), url('fonts/Caslon_Calligraphic-webfont.ttf') format('truetype'), url('fonts/Caslon_Calligraphic-webfont.svg#webfontjRDT6XTp') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'DeStencilNFRegular';
+		src: url('fonts/DESTENCI-webfont.eot');
+		src: local('☺'), url('fonts/DESTENCI-webfont.woff') format('woff'), url('fonts/DESTENCI-webfont.ttf') format('truetype'), url('fonts/DESTENCI-webfont.svg#webfontwIHKC2lY') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'KingthingsWroteRegular';
+		src: url('fonts/Kingthings_Wrote-webfont.eot');
+		src: local('☺'), url('fonts/Kingthings_Wrote-webfont.woff') format('woff'), url('fonts/Kingthings_Wrote-webfont.ttf') format('truetype'), url('fonts/Kingthings_Wrote-webfont.svg#webfontWS9DXsOL') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'KulminoituvaRegular';
+		src: url('fonts/kulminoituva-webfont.eot');
+		src: local('☺'), url('fonts/kulminoituva-webfont.woff') format('woff'), url('fonts/kulminoituva-webfont.ttf') format('truetype'), url('fonts/kulminoituva-webfont.svg#webfontHNAi9IoX') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'NervousRexRegular';
+		src: url('fonts/nervous_rex-webfont.eot');
+		src: local('☺'), url('fonts/nervous_rex-webfont.woff') format('woff'), url('fonts/nervous_rex-webfont.ttf') format('truetype'), url('fonts/nervous_rex-webfont.svg#webfontQ6GocrYi') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'NotethisRegular';
+		src: url('fonts/Note_this-webfont.eot');
+		src: local('☺'), url('fonts/Note_this-webfont.woff') format('woff'), url('fonts/Note_this-webfont.ttf') format('truetype'), url('fonts/Note_this-webfont.svg#webfont6slwoXsK') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'ProFontWindowsRegular';
+		src: url('fonts/ProFontWindows-webfont.eot');
+		src: local('☺'), url('fonts/ProFontWindows-webfont.woff') format('woff'), url('fonts/ProFontWindows-webfont.ttf') format('truetype'), url('fonts/ProFontWindows-webfont.svg#webfont3SrueZ7m') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'RieslingRegular';
+		src: url('fonts/riesling-webfont.eot');
+		src: local('☺'), url('fonts/riesling-webfont.woff') format('woff'), url('fonts/riesling-webfont.ttf') format('truetype'), url('fonts/riesling-webfont.svg#webfontD04FPgna') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'UpperEastSideRegular';
+		src: url('fonts/UpperEastSide-webfont.eot');
+		src: local('☺'), url('fonts/UpperEastSide-webfont.woff') format('woff'), url('fonts/UpperEastSide-webfont.ttf') format('truetype'), url('fonts/UpperEastSide-webfont.svg#webfont7n1NdCl5') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+	@font-face {
+		font-family: 'VeggieburgerRegular';
+		src: url('fonts/VeggiMed-webfont.eot');
+		src: local('☺'), url('fonts/VeggiMed-webfont.woff') format('woff'), url('fonts/VeggiMed-webfont.ttf') format('truetype'), url('fonts/VeggiMed-webfont.svg#webfont2htNrBTC') format('svg');
+		font-weight: normal;
+		font-style: normal;
+		}
+
+	/* ANDROID FONTS */
+	
+	@font-face {
+		font-family: 'ComfortaaRegularANDROID';
+		src: url('fonts/Comfortaa_Regular-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'ProclamateLightLightANDROID';
+		src: url('fonts/proclamate_light-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'KitchenpoliceRegularANDROID';
+	  	src: url('fonts/KITCHENPOLICE-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'ActionManRegularANDROID';
+		src: url('fonts/Action_Man-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'LetritistaANDROID';
+		src: url('fonts/Letritista-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'FuroreANDROID';
+		src: url('fonts/Furore-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'AnagramRegularANDROID';
+		src: url('fonts/Anagram-webfont.ttf') format('truetype');	
+		}
+	@font-face {
+		font-family: 'CaslonCalligraphicInitialsRegANDROID';
+		src: url('fonts/Caslon_Calligraphic-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'DeStencilNFRegularANDROID';
+		src: url('fonts/DESTENCI-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'KingthingsWroteRegularANDROID';
+		src: url('fonts/Kingthings_Wrote-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'KulminoituvaRegularANDROID';
+		src: url('fonts/kulminoituva-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'NervousRexRegularANDROID';
+		src: url('fonts/nervous_rex-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'NotethisRegularANDROID';
+		src: url('fonts/Note_this-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'ProFontWindowsRegularANDROID';
+		src: url('fonts/ProFontWindows-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'RieslingRegularANDROID';
+		src: url('fonts/riesling-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'UpperEastSideRegularANDROID';
+		src: url('fonts/UpperEastSide-webfont.ttf') format('truetype');
+		}
+	@font-face {
+		font-family: 'VeggieburgerRegularANDROID';
+		src: url('fonts/VeggiMed-webfont.ttf') format('truetype');
+		}
+		
+	body {
+		font-family:Arial;
+        font-size:12pt; }
+    textarea {
+    	font-size:14pt;}    
+
+    </style>
+    
+    <script type="text/javascript" language="javascript">
+    
+    var arrFonts = new Array();
+     
+    function init()
+    {
+    }
+
+    //*** Device Ready Code **********
+    function onDeviceReady()
+    {
+    	try
+        {
+            //lock orientation
+            intel.xdk.device.setRotateOrientation("portrait");
+            intel.xdk.device.setAutoRotate(false);
+            
+            //manage power
+            intel.xdk.device.managePower(true,false);
+        }
+        catch(e) { alert(e.message); }
+        
+        //test the device
+        if (intel.xdk.device.platform=="Android")
+        {
+            arrFonts = { "ActionManRegularANDROID":"Action Man", 
+			             "KitchenpoliceRegularANDROID":"Kitchenpolice",
+                         "ComfortaaRegularANDROID":"Comfortaa",
+                         "ProclamateLightLightANDROID":"Proclamate Light",
+                         "FuroreANDROID":"Furore", 
+                         "LetritistaANDROID":"Letritista", 
+						 "AnagramRegularANDROID":"Anagram", 
+						 "CaslonCalligraphicInitialsRegANDROID":"Caslon Calligraphic Initials", 
+						 "DeStencilNFRegularANDROID":"DeStencil NF", 
+						 "KingthingsWroteRegularANDROID":"Kingthings Wrote", 
+						 "KulminoituvaRegularANDROID":"Kulminoituva", 
+						 "NervousRexRegularANDROID":"Nervous Rex", 
+						 "NotethisRegularANDROID":"Notethis", 
+						 "ProFontWindowsRegularANDROID":"Pro Font Windows", 
+						 "RieslingRegularANDROID":"Riseling", 
+						 "UpperEastSideRegularANDROID":"Upper East Side", 
+						 "VeggieburgerRegularANDROID":"Veggieburger"
+                         };}
+        else
+        {
+            arrFonts = { "ActionManRegular":"Action Man", 
+			             "KitchenpoliceRegular":"Kitchenpolice",
+                         "ComfortaaRegular":"Comfortaa", 
+                         "ProclamateLightLight":"Proclamate Light",
+                         "Furore":"Furore", 
+                         "Letritista":"Letritista", 
+						 "AnagramRegular":"Anagram", 
+						 "CaslonCalligraphicInitialsReg":"Caslon Calligraphic Initials", 
+						 "DeStencilNFRegular":"DeStencil NF", 
+						 "KingthingsWroteRegular":"Kingthings Wrote", 
+						 "KulminoituvaRegular":"Kulminoituva", 
+						 "NervousRexRegular":"Nervous Rex", 
+						 "NotethisRegular":"Notethis", 
+						 "ProFontWindowsRegular":"Pro Font Windows", 
+						 "RieslingRegular":"Riseling", 
+						 "UpperEastSideRegular":"Upper East Side", 
+						 "VeggieburgerRegular":"Veggieburger"
+                         };}
+                
+        for (var i in arrFonts)
+        {
+            document.getElementById("ddFonts").innerHTML += "<option value='" +  i + "'>" +  arrFonts[i] + "</option>";
+        }  
+
+		//show splash screen
+		intel.xdk.device.hideSplashScreen();		
+    }
+    
+
+    document.addEventListener("intel.xdk.device.ready",onDeviceReady,false); 
+    
+    function changeFont()
+    {
+        document.getElementById("txtSample").style.fontFamily=document.getElementById("ddFonts").value;
+        document.getElementById("userinput").value=document.getElementById("ddFonts").options[document.getElementById("ddFonts").selectedIndex].text;
+        changeText();
+    }
+    
+    function changeText()
+    {
+    	document.getElementById("txtSample").innerHTML = document.getElementById("userinput").value;
+    }
+    
+    //*** Prevent Default Scrolling ******
+    preventDefaultScroll = function(event) {
+        // Prevent scrolling on this element
+        event.preventDefault();
+        window.scroll(0,0);
+        return false;
+    };
+    
+    window.document.addEventListener('touchmove', preventDefaultScroll, false);
+    </script>
+    
+
+</head>
+
+<body onload="init();" style="background-image:url('images/app_bg.jpg'); background-repeat: no-repeat;">
+<!-- <img src="images/font_header.png">-->
+<div align="center" style="position:absolute;top:50px;left:0px;width:300px;">
+<span class="heading1">Choose Your Font:</span>
+<select id="ddFonts" style="width:190px;" onchange="changeFont();">
+<option value=''>Select a Font</option>
+</select><br />
+<span class="heading1">Enter Your Text:</span>
+<textarea rows="2" cols="30" id="userinput" style="width:190px;">Change your text here</textarea><br/>
+<br/>
+<input type="button" class="heading1" value="Draw Text!" onClick="changeText();" style="width:190px;height:50px;" />
+<br/>
+<br />
+<div id="txtSample" style="width:300px;">The quick brown fox jumped over the lazy dog</div>
+
+<!--
+Native iPhone fonts:
+American Typewriter
+American Typewriter Condensed
+Arial
+Arial Rounded MT Bold
+Courier New
+Georgia
+Helvetica
+Marker Felt
+Times New Roman
+Trebuchet MS
+Verdana
+Zapfino
+-->
+
+</div>
+<div style="position:absolute;bottom:10px;left:0px;text-align:center;width:300px;"><a href="http://www.fontsquirrel.com">Font Squirrel</a> provided these fonts</div>
+</body>
+</html>
